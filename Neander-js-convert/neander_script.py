@@ -4,7 +4,12 @@ import sys
 def ler_arquivo(file1: str) -> list:
     try:
         with open(file1) as arquivo:
-            return arquivo.read().splitlines()
+            leitura = arquivo.read().splitlines()
+            # Divide cada linha em um item de lista
+            list = [x.split() for x in leitura]
+            # Divide cada item de lista (se tiver mais de uma coisa) em sublista
+            return [e for y in list for e in y]
+            # Retorna lista com cada string, incluindo das sublistas
     except:
         print("Arquivo não encontrado.")
         sys.exit(1)
